@@ -1,4 +1,6 @@
+<!-- 
 [![Build Status](NOTE: Use something like Travis CI http://about.travis-ci.org/docs/user/getting-started/)
+ -->
 
 # Lifted Wiki
 
