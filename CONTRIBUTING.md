@@ -1,4 +1,4 @@
-## Adding new features
+# Adding new features
 
 This section includes advice on how to build new features for the project & what kind of process it includes. 
 
