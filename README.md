@@ -12,7 +12,7 @@ A personal wiki solution inspired by Gollum.
 
 ## Development
 
-To see what has changed in recent versions of Lifted Wiki, see the [CHANGELOG]().
+To see what has changed in recent versions of Lifted Wiki, see the [CHANGELOG](https://github.com/lee-dohm/liftedwiki/blob/master/CHANGELOG.md).
 
 ## Core Team Members
 
@@ -27,6 +27,6 @@ Feel free to chat with the Lifted Wiki core team (and many other users) on IRC i
 
 ## Copyright
 
-Copyright © 2012 Lee Dohm, Lifted Studios. See [LICENSE]() for details.
+Copyright © 2012 Lee Dohm, Lifted Studios. See [LICENSE](https://github.com/lee-dohm/liftedwiki/blob/master/LICENSE.md) for details.
 
 Project is a member of the [OSS Manifesto](http://ossmanifesto.com/).
