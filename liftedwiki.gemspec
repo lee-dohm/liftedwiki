@@ -24,6 +24,11 @@ Gem::Specification.new do |s|
 
   s.require_paths = ['lib']
 
+  s.add_development_dependency('minitest', '~> 3.0')
+  s.add_development_dependency('rake', '~> 10.0')
+  s.add_development_dependency('redcarpet')
+  s.add_development_dependency('yard')
+
   s.files = `git ls-files`.
     split("\n").
     sort.
