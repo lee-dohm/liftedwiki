@@ -12,5 +12,6 @@ require 'liftedwiki'
 describe 'Version' do
   it 'will have a version' do
     LiftedWiki::VERSION.kind_of?(String).must_equal true
+    LiftedWiki::VERSION.must_match(/\d+\.\d+\.\d+/)
   end
 end
