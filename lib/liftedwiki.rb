@@ -3,4 +3,5 @@
 # 
 
 require 'liftedwiki/pipeline'
+require 'liftedwiki/reference_filter'
 require 'liftedwiki/version'
