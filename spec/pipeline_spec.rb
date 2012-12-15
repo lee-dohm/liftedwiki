@@ -41,7 +41,17 @@ describe LiftedWiki::Pipeline do
 
     html = pipeline.run(code)
 
-    html.must_match(/<pre lang="ruby"><code>/)
-    html.must_match(/<\/code><\/pre>/)
+    html.must_match(/<div class="highlight">/)
+  end
+
+  it 'can display emoji' do
+    pipeline = new_pipeline
+    emoji = read_test_file('emoji.md')
+
+    html = pipeline.run(emoji)
+
+    html.must_match(/<img class="emoji" title=":bowtie:" alt=":bowtie:" src="\/images\/emoji\/bowtie.png"/)
+    html.must_match(/<img class="emoji" title=":smile:" alt=":smile:" src="\/images\/emoji\/smile.png"/)
+    html.must_match(/<img class="emoji" title=":neckbeard:" alt=":neckbeard:" src="\/images\/emoji\/neckbeard.png"/)
   end
 end

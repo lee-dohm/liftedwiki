@@ -18,7 +18,7 @@ task :test => [:spec]
 Rake::TestTask.new('spec') do |spec|
   spec.libs << 'spec'
   spec.test_files = Dir['spec/**/*_spec.rb']
-  spec.warning = true
+  # spec.warning = true
 end
 
 YARD::Rake::YardocTask.new
