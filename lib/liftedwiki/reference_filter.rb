@@ -15,6 +15,14 @@ module LiftedWiki
   class ReferenceFilter < HTML::Pipeline::Filter
     # Replaces references with the appropriate HTML and returns the result.
     def call
+      refs = []
+
+      set = @doc.xpath('.//ref')
+      set.each do |node|
+        refs << node.inner_html
+        node.inner_html = "<sup class=\"reference\">[<a href=\"#wiki-cite_note-#{refs.count}\">#{refs.count}</a>]</sup>"
+      end
+
       @doc
     end
   end

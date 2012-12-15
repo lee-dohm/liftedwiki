@@ -29,8 +29,16 @@ describe LiftedWiki::ReferenceFilter do
   it 'will pass through a fragment without references unchanged' do
     filter = new_filter('Some fake document text')
 
-    text = filter.call
+    text = filter.call.to_s
 
-    text.to_s.must_equal 'Some fake document text'
+    text.must_equal 'Some fake document text'
+  end
+
+  it 'will replace references with footnote anchors' do
+    filter = new_filter(read_test_file('simple_reference.html'))
+
+    text = filter.call.to_s
+
+    text.must_match(/<sup class="reference">\[<a href="#wiki-cite_note-1">1<\/a>\]<\/sup>/)
   end
 end
