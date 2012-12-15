@@ -13,5 +13,9 @@ module LiftedWiki
   # `<references/>` is placed in the text an ordered list of the references and their text will be placed at that
   # location.
   class ReferenceFilter < HTML::Pipeline::Filter
+    # Replaces references with the appropriate HTML and returns the result.
+    def call
+      @doc
+    end
   end
 end

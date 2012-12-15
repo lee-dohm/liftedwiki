@@ -6,6 +6,9 @@ require 'html/pipeline'
 
 module LiftedWiki
   # Defines the standard Lifted Wiki Markdown-to-HTML pipeline.
+  # 
+  # The standard pipeline supports converting [Markdown](http://daringfireball.net/projects/markdown/syntax) into HTML along with
+  # syntax highlighting of code blocks, footnotes and [emoji](http://www.emoji-cheat-sheet.com/).
   class Pipeline
     # Standard pipeline definition
     PIPELINE = [
