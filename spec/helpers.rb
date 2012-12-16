@@ -10,7 +10,7 @@ class String
   # @param [String] tag Tag to search for.
   # @return Set of nodes that match the given tag.
   def node(tag)
-    Nokogiri::parse(to_s).xpath(".//#{tag}")
+    Nokogiri::make(self).xpath(".//#{tag}")
   end
 end
 
