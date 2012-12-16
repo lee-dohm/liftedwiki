@@ -14,6 +14,7 @@ module LiftedWiki
     PIPELINE = [
       HTML::Pipeline::MarkdownFilter,
       HTML::Pipeline::EmojiFilter,
+      LiftedWiki::ReferenceFilter,
       HTML::Pipeline::SyntaxHighlightFilter
     ]
 
