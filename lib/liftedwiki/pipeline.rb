@@ -2,7 +2,7 @@
 # Copyright (c) 2012 by Lifted Studios.  All Rights Reserved.
 # 
 
-require 'html/pipeline'
+require 'liftedwiki/reference_filter'
 
 module LiftedWiki
   # Defines the standard Lifted Wiki Markdown-to-HTML pipeline.

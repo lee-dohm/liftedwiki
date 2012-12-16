@@ -57,6 +57,5 @@ describe LiftedWiki::ReferenceFilter do
     text = filter.call.to_s
 
     text.node('references').count.must_equal 0
-    text.node('ol').count.must_equal 1
   end
 end
