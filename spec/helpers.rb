@@ -2,6 +2,19 @@
 # Copyright (c) 2012 by Lifted Studios.  All Rights Reserved.
 # 
 
+require 'nokogiri'
+
+class String
+  # Creates an HTML document fragment out of the string's contents and returns the nodes with the matching tags.
+  # 
+  # @param [String] tag Tag to search for.
+  # @return Set of nodes that match the given tag.
+  def node(tag)
+    doc = Nokogiri::parse(to_s)
+    doc.xpath(".//#{tag}")
+  end
+end
+
 # Reads a test data file.
 # 
 # The path passed to the function is treated as relative to the
