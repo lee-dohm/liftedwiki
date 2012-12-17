@@ -3,13 +3,22 @@
 This section includes advice on how to build new features for the project & what kind of process it includes. 
 
 * This is how we like people to add new features:
+** Add only one feature at a time each on a new branch
 * Here are some specifics on the coding style we prefer:
+** Write the code test first
+** Document the code whether or not it is part of the public API
+*** We use [YARD documentation](http://yardoc.org/)
+*** Documentation comments is in [Markdown](http://daringfireball.net/projects/markdown/) format
 * This is how you send your pull request:
+** TBD
 * You should include the following tests:
+** Unit tests at a bare minimum
+** If creating a new chunk of code (rather than changing already existing code) include integration tests as well
 * These are the updates we hope you make to the changelog:
+** Create a header with a brief description of the feature
+** Document any new command-line options
 
-Don’t get discouraged! We estimate that the response time from the
-maintainers is around:
+Don’t get discouraged! We estimate that the response time from the maintainers is around: One week, perhaps longer in December.
 
 # Bug triage
 
