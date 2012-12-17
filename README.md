@@ -4,7 +4,9 @@
 
 # Lifted Wiki
 
-A personal wiki solution inspired by Gollum.
+A personal wiki solution inspired by [Gollum](https://github.com/github/gollum).
+
+I got tired of working with products like OneNote or Evernote because either they had bugs, were not available on my chosen platforms or simply didn't make it very easy to make readable documentation.  Additionally, I see my personal wiki as a kind of documentation for my life.  I want it to be a resource that I use for years and even decades to come.  This means that I need it to be resilient to the failure of businesses and even changing of data formats over the years.  I decided that a personal wiki that I wrote myself would be the best approximation of what I was looking for.
 
 ## Installation and usage
 
