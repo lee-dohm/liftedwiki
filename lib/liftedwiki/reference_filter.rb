@@ -15,25 +15,54 @@ module LiftedWiki
   # `<references/>` is placed in the text, an ordered list of the references and their text will be placed at that
   # location.
   class ReferenceFilter < HTML::Pipeline::Filter
-    # Replaces references with the appropriate HTML and returns the result.
+    # ID of the note
+    NOTE = 'wiki-cite_note'
+
+    # ID of the ref
+    REF = 'wiki-cite_ref'
+
+    # Replaces ref and references tags with the appropriate HTML and returns the result.
     def call
-      refs = []
+      refs = replace_refs
+      replace_references(refs)
 
-      doc.xpath('.//ref').each do |ref_node|
-        refs << ref_node.inner_html
+      doc
+    end
 
-        sup_node = ref_node.document.create_element('sup', :class => 'reference', :id => "wiki-cite_ref-#{refs.count}")
-        sup_node.inner_html = %Q([<a href="#wiki-cite_note-#{refs.count}">#{refs.count}</a>])
+    private
 
-        ref_node.replace(sup_node)
+    # Creates the HTML to replace the ref node in the document.
+    # 
+    # @param [Nokogiri::XML::Node] node  Node in the document we are working with.
+    # @param [Integer]             index Index of the item.
+    def create_ref_node(node, index)
+      ref_node = node.document.create_element('sup', :class => 'reference', :id => "#{REF}-#{index}")
+      ref_node.inner_html = %Q([<a href="##{NOTE}-#{index}">#{index}</a>])
+      ref_node
+    end
+
+    # Replaces ref tags with the appropriate HTML and returns the set of reference texts.
+    def replace_refs
+      doc.xpath('.//ref').each_with_index.map do |node, index|
+        text = node.inner_html
+
+        ref_node = create_ref_node(node, index + 1)
+        node.replace(ref_node)
+
+        text
       end
+    end
 
+    # Replaces references tags with the appropriate HTML.
+    # 
+    # @param [Array] refs List of reference texts.
+    def replace_references(refs)
       set = doc.xpath('.//references')
       if set
         inner_html = ''
         refs.each_with_index do |note, i|
           num = i + 1
-          inner_html << %Q(<li id="wiki-cite_note-#{num}"><b><a href="#wiki-cite_ref-#{num}">^</a></b> #{note}</li>)
+          inner_html << %Q(<li id="#{NOTE}-#{num}"><b><a href="##{REF}-#{num}">^</a></b> #{note}</li>)
         end
 
         set.each do |references_node|
@@ -42,8 +71,6 @@ module LiftedWiki
           references_node.parent.replace ol_node
         end
       end
-
-      doc
     end
   end
 end
