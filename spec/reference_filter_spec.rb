@@ -57,5 +57,10 @@ describe LiftedWiki::ReferenceFilter do
     text = filter.call.to_s
 
     text.node('references').count.must_equal 0
+    text.node('ol').count.must_equal 1
+    text.node('li').count.must_equal 1
+    text.node('li').attribute('id').value.must_equal 'wiki-cite_note-1'
+    text.node('li').inner_html.must_match(/#wiki-cite_ref-1/)
+    text.node('li').inner_html.must_match(/With a footnote\./)
   end
 end
