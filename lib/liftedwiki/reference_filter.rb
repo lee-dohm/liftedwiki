@@ -68,7 +68,7 @@ module LiftedWiki
         set.each do |references_node|
           ol_node = references_node.document.create_element "ol"
           ol_node.inner_html = inner_html
-          references_node.parent.replace ol_node
+          references_node.parent.replace(ol_node)
         end
       end
     end
