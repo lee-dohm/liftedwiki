@@ -14,9 +14,9 @@ module LiftedWiki
 
     # Returns the absolute path to the directory underneath which all the resources are stored.
     # 
-    # @return [String] Absolute path to the frontend directory.
+    # @return [Pathname] Absolute path to the frontend directory.
     def resource_base
-      File.dirname(File.absolute_path(__FILE__))
+      Pathname.new(File.dirname(File.absolute_path(__FILE__)))
     end
 
     get ':page' do
