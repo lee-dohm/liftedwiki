@@ -5,9 +5,18 @@
 require 'sinatra/base'
 
 module LiftedWiki
+  # Controls the wiki application.
   class WikiApp < Sinatra::Base
+    # Initializes a new instance of the `WikiApp` class.
     def initialize
       @pipeline = Pipeline.new
+    end
+
+    # Returns the absolute path to the directory underneath which all the resources are stored.
+    # 
+    # @return [String] Absolute path to the frontend directory.
+    def resource_base
+      File.dirname(File.absolute_path(__FILE__))
     end
 
     get ':page' do
