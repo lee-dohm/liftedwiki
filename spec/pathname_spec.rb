@@ -28,6 +28,15 @@ describe Pathname do
     path.to_s.must_equal 'foo_bar/baz'
   end
 
+  it 'will remove the extension when to_display is called' do
+    path = Pathname.new('foo_bar.baz')
+
+    path = path.to_display
+
+    path.kind_of?(Pathname).must_equal true
+    path.to_s.must_equal 'foo bar'
+  end
+
   it 'will have a to_source method' do
     path = Pathname.new('foo bar baz')
 
@@ -44,5 +53,14 @@ describe Pathname do
 
     path.kind_of?(Pathname).must_equal true
     path.to_s.must_equal 'foo bar/baz'
+  end
+
+  it 'will add an extension when supplied to to_source' do
+    path = Pathname.new('foo bar')
+
+    path = path.to_source('baz')
+
+    path.kind_of?(Pathname).must_equal true
+    path.to_s.must_equal 'foo_bar.baz'
   end
 end
