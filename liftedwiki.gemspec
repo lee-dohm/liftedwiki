@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_dependency('html-pipeline')
+  s.add_dependency('sinatra', '~> 1.3')
 
   s.add_development_dependency('minitest', '~> 3.0')
   s.add_development_dependency('rake', '~> 10.0')
