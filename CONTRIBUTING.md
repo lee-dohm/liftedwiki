@@ -8,7 +8,7 @@ This section includes advice on how to build new features for the project & what
     * Write the code test first
     * Document the code whether or not it is part of the public API
         * We use [YARD documentation](http://yardoc.org/)
-        * Documentation comments is in [Markdown](http://daringfireball.net/projects/markdown/) format
+        * Documentation comments are in [Markdown](http://daringfireball.net/projects/markdown/) format
 * This is how you send your pull request:
     * TBD
 * You should include the following tests:
