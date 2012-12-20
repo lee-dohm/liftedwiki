@@ -11,4 +11,13 @@ class Pathname
     file = basename.to_s.gsub(/_/, ' ')
     Pathname.new(dir) + file
   end
+
+  # Converts the filename for saving to storage by replacing spaces in the filename (not the path) with underscores.
+  # 
+  # @return [Pathname] Path with any spaces replaced with underscores.
+  def to_source
+    dir = dirname
+    file = basename.to_s.gsub(/ /, '_')
+    Pathname.new(dir) + file
+  end
 end
