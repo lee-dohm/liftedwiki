@@ -5,7 +5,7 @@
 require 'sinatra/base'
 
 module LiftedWiki
-  # Controls the wiki application.
+  # Controls the wiki application by handling all routing and events.
   class WikiApp < Sinatra::Base
     # Initializes a new instance of the `WikiApp` class.
     def initialize
