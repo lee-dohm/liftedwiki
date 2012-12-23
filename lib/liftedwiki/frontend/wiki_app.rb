@@ -10,5 +10,10 @@ module LiftedWiki
     get '/' do
       redirect '/Home'
     end
+
+    get '*' do
+      path = params[:splat].first
+      erb :page, :locals => { :body => "<p>It works!</p>", :title => "#{path}: It Works!" }
+    end
   end
 end
