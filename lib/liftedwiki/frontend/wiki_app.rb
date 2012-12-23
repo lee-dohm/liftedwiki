@@ -7,7 +7,7 @@ require 'sinatra/base'
 module LiftedWiki
   # Controls the wiki application by handling all routing and events.
   class WikiApp < Sinatra::Base
-    def new_pipeline
+    def pipeline
       @pipeline = Pipeline.new if @pipeline.nil?
       @pipeline
     end
@@ -28,8 +28,7 @@ module LiftedWiki
       filename = File.join(Dir.pwd, path + '.md')
       raise Sinatra::NotFound unless File.exists?(filename)
 
-      pipeline = new_pipeline
-      body = pipeline.run(File.read(File.join(Dir.pwd, path + '.md')))
+      body = pipeline.run(File.read(filename))
 
       erb :page, :locals => { :body => body, :title => path }
     end
