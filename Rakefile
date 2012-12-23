@@ -3,9 +3,30 @@
 # 
 
 require 'bundler/gem_tasks'
+require 'liftedwiki/version'
 require 'rake/clean'
 require 'rake/testtask'
 require 'yard'
+
+def name
+  @name ||= Dir['*.gemspec'].first.split('.').first
+end
+
+def version
+  LiftedWiki::VERSION
+end
+
+def rubyforge_project
+  name
+end
+
+def gemspec_file
+  "#{name}.gemspec"
+end
+
+def gem_file
+  "#{name}-#{version}.gem"
+end
 
 CLEAN.include('.yardoc')
 CLOBBER.include('doc', 'pkg')
@@ -22,3 +43,28 @@ Rake::TestTask.new('spec') do |spec|
 end
 
 YARD::Rake::YardocTask.new
+
+desc 'Build gem'
+task :build do
+  sh "mkdir -p pkg"
+  sh "gem build #{gemspec_file}"
+  sh "mv #{gem_file} pkg"
+end
+
+desc 'Create a release build'
+task :release => :build do
+  unless `git branch` =~ /^\* master$/
+    puts "You must be on the master branch to release!"
+    exit!
+  end
+  sh "git commit --allow-empty -a -m 'Release #{version}'"
+  sh "git pull"
+  sh "git tag v#{version}"
+  sh "git push origin master"
+  sh "git push origin v#{version}"
+  sh "gem push pkg/#{name}-#{version}.gem"
+end
+
+task :install => :build do
+  sh "gem install pkg/#{gem_file}"
+end

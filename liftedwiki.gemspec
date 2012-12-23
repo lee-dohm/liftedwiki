@@ -24,6 +24,8 @@ Gem::Specification.new do |s|
 
   s.require_paths = ['lib']
 
+  s.executables = ['liftedwiki']
+
   s.add_dependency('html-pipeline')
   s.add_dependency('sinatra', '~> 1.3')
 

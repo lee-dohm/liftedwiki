@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+# 
+# Copyright (c) 2012 by Lifted Studios.  All Rights Reserved.
+# 
+
+require 'liftedwiki'
+
+include LiftedWiki
+
+WikiApp.new

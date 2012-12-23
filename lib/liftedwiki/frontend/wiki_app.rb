@@ -12,6 +12,15 @@ module LiftedWiki
       @pipeline = Pipeline.new
     end
 
+    # Builds the page title out of the file name.
+    # 
+    # @param [String] Path to the page.
+    # @return [String] Page title.
+    def build_title(page)
+      path = Pathname.new(page)
+      path.basename.to_display
+    end
+
     # Returns the absolute path to the directory underneath which all the resources are stored.
     # 
     # @return [Pathname] Absolute path to the frontend directory.
@@ -21,7 +30,9 @@ module LiftedWiki
 
     get ':page' do
       body = @pipeline.run(params[:page])
-      erb :page, :locals => { :body => body }
+      erb :page, :locals => { :body => body, :title => build_title(:page) }
     end
+
+    run!
   end
 end
