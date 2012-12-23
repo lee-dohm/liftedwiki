@@ -7,6 +7,13 @@ body {
     padding: 0% 10%;
 }
 
+h1 { font-family: Helvetica, Arial, sans-serif; }
+h2 { font-family: Helvetica, Arial, sans-serif; }
+h3 { font-family: Helvetica, Arial, sans-serif; }
+h4 { font-family: Helvetica, Arial, sans-serif; }
+h5 { font-family: Helvetica, Arial, sans-serif; }
+h6 { font-family: Helvetica, Arial, sans-serif; }
+
 /* Standard Pygments Colors */
 .highlight .hll { background-color: #ffffcc }
 .highlight  { background: #f8f8f8; }
