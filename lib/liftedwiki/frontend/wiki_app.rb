@@ -30,8 +30,7 @@ module LiftedWiki
     # @param [String] path Path to the file to serve.
     # @return Contents of the file.
     def serve_file(path)
-      logger.info "Entered serve_file with parameters: #{path}"
-      File.read(File.join(File.dirname(__FILE__), 'css', path))
+      File.read(validate_file(File.dirname(__FILE__), 'css', path))
     end
 
     # Serves a wiki page.
@@ -39,14 +38,20 @@ module LiftedWiki
     # @param [String] path Path of the wiki page to serve.
     # @return [String] Content of the page to serve.
     def serve_page(path)
-      logger.info "Entered serve_page with parameters: #{path}"
-
-      filename = File.join(Dir.pwd, path + '.md')
-      raise Sinatra::NotFound unless File.exists?(filename)
-
-      body = pipeline.run(File.read(filename))
+      body = pipeline.run(File.read(validate_file(Dir.pwd, path + '.md')))
 
       erb :page, :locals => { :body => body, :title => File.basename(path) }
+    end
+
+    # Validates a file before returning the joined path.
+    # 
+    # @param [Array] args Components of the path to be joined together and validated.
+    # @return [String] Validated and joined path.
+    def validate_file(*args)
+      filename = File.join(*args)
+      raise Sinatra::NotFound unless File.exists?(filename)
+
+      filename
     end
 
     configure :production, :development do
