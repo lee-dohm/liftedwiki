@@ -23,14 +23,13 @@ module LiftedWiki
     get '*' do
       path = params[:splat].first
       pass if path =~ /^\/__sinatra__/
-      path = path[1..-1] if path[0] == '/'
 
       filename = File.join(Dir.pwd, path + '.md')
       raise Sinatra::NotFound unless File.exists?(filename)
 
       body = pipeline.run(File.read(filename))
 
-      erb :page, :locals => { :body => body, :title => path }
+      erb :page, :locals => { :body => body, :title => File.basename(path) }
     end
   end
 end
