@@ -3,6 +3,7 @@
 # 
 
 require 'html/pipeline'
+require 'liftedwiki/wiki_link_filter'
 require 'liftedwiki/reference_filter'
 
 module LiftedWiki
@@ -13,6 +14,7 @@ module LiftedWiki
   class Pipeline
     # Standard pipeline definition
     PIPELINE = [
+      LiftedWiki::WikiLinkFilter,
       HTML::Pipeline::MarkdownFilter,
       HTML::Pipeline::EmojiFilter,
       LiftedWiki::ReferenceFilter,

@@ -5,8 +5,12 @@
 module LiftedWiki
   # An `HTML::Pipeline` filter class that detects wiki-style links and converts them to HTML links.
   class WikiLinkFilter < HTML::Pipeline::Filter
-    def initialize(text)
-      raise ArgumentError, "WikiLinkFilter only supports raw text." unless text.kind_of? String
+    # Performs the translation and returns the updated text.
+    # 
+    # @return [String] Updated text with translated wiki links.
+    def call
+      text = html.gsub(/\[\[(.*)\|(.*)\]\]/, '<a href="/\1">\2</a>')
+      text.gsub(/\[\[(.*)\]\]/, '<a href="/\1">\1</a>')
     end
   end
 end

@@ -7,6 +7,7 @@ gem 'minitest'
 require 'minitest/spec'
 require 'minitest/autorun'
 
+require 'helpers'
 require 'liftedwiki'
 require 'nokogiri'
 
@@ -25,9 +26,19 @@ describe LiftedWiki::WikiLinkFilter do
     filter.wont_be_nil
   end
 
-  it 'raises an error if given a Nokogiri DocumentFragment' do
-    proc {
-      new_filter(Nokogiri::make('Just some sample text'))
-    }.must_raise ArgumentError
+  it 'converts a normal wiki link' do
+    filter = new_filter('[[Link]]')
+
+    text = filter.call
+
+    text.must_equal '<a href="/Link">Link</a>'
+  end
+
+  it 'converts a wiki link with a description' do
+    filter = new_filter('[[Link|Description]]')
+
+    text = filter.call
+
+    text.must_equal '<a href="/Link">Description</a>'
   end
 end
