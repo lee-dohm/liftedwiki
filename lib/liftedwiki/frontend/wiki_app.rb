@@ -25,6 +25,14 @@ module LiftedWiki
       @pipeline
     end
 
+    # Reads in the content of the page at the given path.
+    # 
+    # @param [String] path Path within the wiki to the page.
+    # @return [String] Contents of the page.
+    def read_page(path)
+      IO.read(validate_file(Dir.pwd, path + '.md'))
+    end
+
     # Serves a file.
     # 
     # @param [String] path Path to the file to serve.
@@ -37,7 +45,7 @@ module LiftedWiki
         dir = [File.dirname(__FILE__), path]
       end
 
-      File.read(validate_file(*dir))
+      IO.read(validate_file(*dir))
     end
 
     # Serves a wiki page.
@@ -45,7 +53,7 @@ module LiftedWiki
     # @param [String] path Path of the wiki page to serve.
     # @return [String] Content of the page to serve.
     def serve_page(path)
-      body = pipeline.run(File.read(validate_file(Dir.pwd, path + '.md')))
+      body = pipeline.run(read_page(path))
 
       erb :page, :locals => { :body => body, :title => File.basename(path) }
     end
@@ -61,6 +69,15 @@ module LiftedWiki
       filename
     end
 
+    # Writes the content of the page to the given path.
+    # 
+    # @param [String] path Path within the wiki to the page.
+    def write_page(path, text)
+      IO.write(File.join(Dir.pwd, path + '.md'), text)
+
+      nil
+    end
+
     configure :production, :development do
       enable :logging
     end
@@ -71,6 +88,22 @@ module LiftedWiki
 
     get '/favicon.ico' do
       raise Sinatra::NotFound
+    end
+
+    post '/edit/*' do
+      path = params[:splat].first
+      text = params[:text]
+
+      write_page(path, text)
+
+      redirect path
+    end
+
+    get '/edit/*' do
+      path = params[:splat].first
+      text = read_page(path)
+
+      erb :edit, :locals => { :path => path, :text => text, :title => File.basename(path) }
     end
 
     get '*' do

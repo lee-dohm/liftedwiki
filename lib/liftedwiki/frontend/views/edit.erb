@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>LiftedWiki - Edit: <%= title %></title>
+        <link rel="stylesheet" type="text/css" href="<%= url('/main.css') %>"/>
+    </head>
+    <body>
+        <div class="header">
+            <h1 class="pagetitle">Edit: <%= title %></h1>
+        </div>
+
+        <div class="body">
+            <form action="<%= url(File.join('/edit/', path)) %>" method="post">
+                <div>
+                    <textarea class="editbox" id="text"><%= text %></textarea>
+                </div>
+                <div>
+                    <input class="savebutton" type="submit" value="Save"/>
+                </div>
+            </form>
+        </div>
+
+        <div class="footer">
+        </div>
+    </body>
+</html>
