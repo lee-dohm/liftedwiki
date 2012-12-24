@@ -30,7 +30,14 @@ module LiftedWiki
     # @param [String] path Path to the file to serve.
     # @return Contents of the file.
     def serve_file(path)
-      File.read(validate_file(File.dirname(__FILE__), 'css', path))
+      case path
+      when /css$/
+        dir = [File.dirname(__FILE__), 'css', path]
+      when /images\/emoji/
+        dir = [File.dirname(__FILE__), path]
+      end
+
+      File.read(validate_file(*dir))
     end
 
     # Serves a wiki page.
