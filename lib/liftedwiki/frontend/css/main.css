@@ -17,10 +17,20 @@ h6 { font-family: Helvetica, Arial, sans-serif; }
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-.pagetitle { 
+.header { 
     border-width: 1px; 
     border-style: none none solid; 
     border-color: black; 
+}
+
+.footer {
+    border-width: 1px; 
+    border-style: solid none none;
+    border-color: black; 
+}
+
+.pagetitle {
+    margin-bottom: 0;
 }
 
 /* Standard Pygments Colors */
