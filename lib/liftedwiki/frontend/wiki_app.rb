@@ -83,7 +83,7 @@ module LiftedWiki
     end
 
     get '/' do
-      redirect '/Home'
+      redirect to('/Home')
     end
 
     get '/favicon.ico' do
@@ -96,7 +96,7 @@ module LiftedWiki
 
       write_page(path, text)
 
-      redirect path
+      redirect to(path)
     end
 
     get '/edit/*' do
