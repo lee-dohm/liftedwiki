@@ -33,21 +33,6 @@ module LiftedWiki
       IO.read(validate_file(Dir.pwd, path + '.md'))
     end
 
-    # Serves a file.
-    # 
-    # @param [String] path Path to the file to serve.
-    # @return Contents of the file.
-    def serve_file(path)
-      case path
-      when /css$/
-        dir = [File.dirname(__FILE__), 'css', path]
-      when /images\/emoji/
-        dir = [File.dirname(__FILE__), path]
-      end
-
-      IO.read(validate_file(*dir))
-    end
-
     # Serves a wiki page.
     # 
     # @param [String] path Path of the wiki page to serve.
@@ -110,11 +95,7 @@ module LiftedWiki
       path = params[:splat].first
       pass if path =~ /^\/__sinatra__/
 
-      if has_extension(path)
-        serve_file(path)
-      else
-        serve_page(path)
-      end
+      serve_page(path)
     end
   end
 end
