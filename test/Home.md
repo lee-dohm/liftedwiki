@@ -18,6 +18,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 # Math
 
+Math within \( a \ne b \) some text ...
+
 $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$
 
 # Code
