@@ -11,7 +11,7 @@
         <div class="body">
             <form action="<%= url(File.join('/edit/', path)) %>" method="post">
                 <div>
-                    <textarea class="editbox" id="text"><%= text %></textarea>
+                    <textarea class="editbox" name="text"><%= text %></textarea>
                 </div>
                 <div>
                     <input class="savebutton" type="submit" value="Save"/>
