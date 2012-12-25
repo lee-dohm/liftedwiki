@@ -18,19 +18,55 @@ a { text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 .header { 
-    border-width: 1px; 
-    border-style: none none solid; 
-    border-color: black; 
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
 }
 
 .footer {
-    border-width: 1px; 
-    border-style: solid none none;
-    border-color: black; 
+    border-top: 1px solid #ddd;
 }
 
 .pagetitle {
     margin-bottom: 0;
+    float: left;
+}
+
+/* @control minibutton */
+ul.actions {
+   display: block;
+   list-style-type: none;
+   overflow: hidden;
+   padding: 0;
+   float: right;
+}
+
+ul.actions li {
+    float: left;
+    font-size: 0.9em;
+    margin-left: 0.6em;
+    margin-bottom: 0.6em;
+}
+
+.minibutton a {
+    background-color: #f7f7f7;
+    border: 1px solid #d4d4d4;
+    color: #333;
+    display: block;
+    font-weight: bold;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0.6em 1em 0.4em 1em;
+    height: 1.2em;
+
+    text-shadow: 0 1px 0 #fff;
+
+    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#f4f4f4', endColorstr='#ececec');
+    background: -webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#ececec));
+    background: -moz-linear-gradient(top, #f4f4f4, #ececec);
+
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
 }
 
 /* Standard Pygments Colors */

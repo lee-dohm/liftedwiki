@@ -55,7 +55,7 @@ module LiftedWiki
     def serve_page(path)
       body = pipeline.run(read_page(path))
 
-      erb :page, :locals => { :body => body, :title => File.basename(path) }
+      erb :page, :locals => { :body => body, :path => path, :title => File.basename(path) }
     end
 
     # Validates a file before returning the joined path.
