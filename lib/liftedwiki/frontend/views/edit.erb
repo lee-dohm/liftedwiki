@@ -6,15 +6,18 @@
     <body>
         <div class="header">
             <h1 class="pagetitle">Edit: <%= title %></h1>
+            <ul class="actions">
+                <li class="minibutton"><a href="<%= url(path) %>">View Page</a></li>
+            </ul>
         </div>
 
-        <div class="body">
+        <div class="body" name="editor">
             <form action="<%= url(File.join('/edit/', path)) %>" method="post">
                 <div>
                     <textarea class="editbox" name="text"><%= text %></textarea>
                 </div>
                 <div>
-                    <input class="savebutton" type="submit" value="Save"/>
+                    <input class="minibutton" type="submit" value="Save"/>
                 </div>
             </form>
         </div>
