@@ -1,5 +1,5 @@
 # 
-# Copyright (c) 2012 by Lifted Studios.  All Rights Reserved.
+# Copyright (c) 2012-2013 by Lifted Studios.  All Rights Reserved.
 # 
 
 require 'date'
@@ -26,7 +26,8 @@ Gem::Specification.new do |s|
 
   s.executables = ['liftedwiki']
 
-  s.add_dependency('html-pipeline')
+  s.add_dependency('github-linguist')
+  s.add_dependency('html-pipeline', '>= 0.0.8')
   s.add_dependency('sinatra', '~> 1.3')
 
   s.add_development_dependency('minitest', '~> 3.0')
