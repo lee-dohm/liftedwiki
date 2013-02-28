@@ -2,34 +2,8 @@
     <head>
         <title>LiftedWiki - <%= title %></title>
         <link rel="stylesheet" type="text/css" href="<%= url('/css/main.css') %>"/>
-        <link rel="stylesheet" type="text/css" href="<%= url('/css/smoothness/jquery-ui-1.9.2.custom.min.css') %>">
 
         <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/javascript" src="<%= url('/js/jquery-ui-1.9.2.custom.min.js') %>"></script>
-        <script type="text/javascript" src="<%= url('/js/jquery-1.8.3.min.js') %>"></script>
-
-        <script type="text/javascript">
-            $( "#dialog-form" ).dialog({
-                autoOpen: false,
-                height: 300,
-                width: 60%,
-                modal: true,
-                buttons: {
-                    "Create page": function() {
-                        $( this ).dialog( "close" );
-                    },
-                    Cancel: function() {
-                        $( this ).dialog( "close" );
-                    }
-                },
-            });
-            
-            $( "#new-page" )
-                .button()
-                .click(function() {
-                    $( "#new-page-dialog" ).dialog( "open" );
-            });        
-        </script>
     </head>
     <body>
         <div class="header">
@@ -46,15 +20,6 @@
         </div>
 
         <div class="footer">
-        </div>
-
-        <div id="new-page-dialog" title="Create new page">
-            <form>
-            <fieldset>
-                <label for="name">Name</label>
-                <input type="text" name="name" class="text ui-widget-content ui-corner-all" />
-            </fieldset>
-            </form>
         </div>
     </body>
 </html>
