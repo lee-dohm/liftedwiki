@@ -4,6 +4,7 @@ PATH
     liftedwiki (0.0.1)
       github-linguist
       html-pipeline (>= 0.0.8)
+      html-pipeline-cite (~> 0.0.1)
       sinatra (~> 1.3)
 
 GEM
@@ -29,13 +30,15 @@ GEM
       nokogiri (~> 1.4)
       rinku (~> 1.7)
       sanitize (~> 2.0)
+    html-pipeline-cite (0.0.1)
+      html-pipeline (>= 0.0.8)
     i18n (0.6.4)
     mime-types (1.21)
     minitest (3.5.0)
     multi_json (1.6.1)
     nokogiri (1.5.6)
     posix-spawn (0.3.6)
-    pygments.rb (0.3.2)
+    pygments.rb (0.4.2)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
     rack (1.4.5)

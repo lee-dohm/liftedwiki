@@ -1,10 +1,10 @@
 # 
-# Copyright (c) 2012 by Lifted Studios.  All Rights Reserved.
+# Copyright (c) 2012-2013 by Lifted Studios.  All Rights Reserved.
 # 
 
 require 'html/pipeline'
+require 'html/pipeline/cite'
 require 'liftedwiki/wiki_link_filter'
-require 'liftedwiki/reference_filter'
 
 module LiftedWiki
   # Defines the standard Lifted Wiki Markdown-to-HTML pipeline.
@@ -17,7 +17,7 @@ module LiftedWiki
       LiftedWiki::WikiLinkFilter,
       HTML::Pipeline::MarkdownFilter,
       HTML::Pipeline::EmojiFilter,
-      LiftedWiki::ReferenceFilter,
+      HTML::Pipeline::CiteFilter,
       HTML::Pipeline::SyntaxHighlightFilter
     ]
 
