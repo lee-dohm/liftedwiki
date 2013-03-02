@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency('github-linguist')
   s.add_dependency('html-pipeline', '>= 0.0.8')
   s.add_dependency('html-pipeline-cite', '~> 0.0.1')
+  s.add_dependency('html-pipeline-wiki-link', '~> 0.0.1')
   s.add_dependency('sinatra', '~> 1.3')
 
   s.add_development_dependency('minitest', '~> 3.0')

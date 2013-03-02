@@ -4,7 +4,7 @@
 
 require 'html/pipeline'
 require 'html/pipeline/cite'
-require 'liftedwiki/wiki_link_filter'
+require 'html/pipeline/wiki_link'
 
 module LiftedWiki
   # Defines the standard Lifted Wiki Markdown-to-HTML pipeline.
@@ -14,7 +14,7 @@ module LiftedWiki
   class Pipeline
     # Standard pipeline definition
     PIPELINE = [
-      LiftedWiki::WikiLinkFilter,
+      HTML::Pipeline::WikiLinkFilter,
       HTML::Pipeline::MarkdownFilter,
       HTML::Pipeline::EmojiFilter,
       HTML::Pipeline::CiteFilter,
