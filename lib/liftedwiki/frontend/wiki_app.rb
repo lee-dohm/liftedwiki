@@ -1,5 +1,5 @@
 # 
-# Copyright (c) 2012 by Lifted Studios.  All Rights Reserved.
+# Copyright (c) 2012-2013 by Lifted Studios.  All Rights Reserved.
 # 
 
 require 'sinatra/base'
@@ -40,7 +40,15 @@ module LiftedWiki
     def serve_page(path)
       body = pipeline.run(read_page(path))
 
-      erb :page, :locals => { :body => body, :path => path, :title => File.basename(path) }
+      erb :page, :locals => { :body => body, :path => path, :title => to_title(path) }
+    end
+
+    # Converts a path to a page title.
+    # 
+    # @param [String] path A file path.
+    # @return [String] The filename, without extension, converted to a page title.
+    def to_title(path)
+      File.basename(path).gsub(/_/, ' ')
     end
 
     # Validates a file before returning the joined path.
@@ -88,7 +96,7 @@ module LiftedWiki
       path = params[:splat].first
       text = read_page(path)
 
-      erb :edit, :locals => { :path => path, :text => text, :title => File.basename(path) }
+      erb :edit, :locals => { :path => path, :text => text, :title => to_title(path) }
     end
 
     get '*' do
